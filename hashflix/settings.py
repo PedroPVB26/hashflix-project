@@ -24,14 +24,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 TOKEN_CSRF = os.getenv("TOKEN_CSRF")
 if TOKEN_CSRF:
     SECRET_KEY = TOKEN_CSRF
-    CSRF_TRUSTED_ORIGINS = ['https://hashflix-f9ar.onrender.com']
+    CSRF_TRUSTED_ORIGINS = ['https://hashflix-5339.onrender.com']
 else:
     SECRET_KEY = 'django-insecure-*4ib42akdl%y0mr_0d$xu7x#+b&0e(hp&ncirydaljh649t7t_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["hashflix-f9ar.onrender.com", "localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ["hashflix-5339.onrender.com", "localhost", "127.0.0.1"]
 
 
 # Application definition
