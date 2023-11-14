@@ -1,4 +1,5 @@
 from django.apps import AppConfig
+from .models import Usuario
 import os
 
 class FilmeConfig(AppConfig):
@@ -6,15 +7,12 @@ class FilmeConfig(AppConfig):
     name = 'filme'
 
 
-    # def ready(self):
-    #     from .models import Usuario
-    #     import os
-    #
-    #     email = os.getenv("EMAIL_ADMIN")
-    #     senha = os.getenv("SENHA_ADMIN")
-    #
-    #     usuarios = Usuario.objects.filter(email=email)
-    #
-    #     if not usuarios:
-    #         Usuario.objects.create_superuser(username="admin", email=email, password=senha,
-    #                                          is_active=True, is_staff=True)
+    def ready(self):
+        email = os.getenv("EMAIL_ADMIN")
+        senha = os.getenv("SENHA_ADMIN")
+
+        usuario = Usuario.objects.filter(email=email).first()
+
+        if not usuario:
+            Usuario.objects.create_superuser(username="admin", email=email, password=senha,
+                                             is_active=True, is_staff=True)
