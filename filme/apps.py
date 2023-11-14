@@ -1,6 +1,4 @@
 from django.apps import AppConfig
-from .models import Usuario
-import os
 
 class FilmeConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
@@ -8,9 +6,11 @@ class FilmeConfig(AppConfig):
 
 
     def ready(self):
+        import os
         email = os.getenv("EMAIL_ADMIN")
         senha = os.getenv("SENHA_ADMIN")
 
+        from filme.models import Usuario
         usuario = Usuario.objects.filter(email=email).first()
 
         if not usuario:
