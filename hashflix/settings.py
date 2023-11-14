@@ -29,7 +29,7 @@ else:
     SECRET_KEY = 'django-insecure-*4ib42akdl%y0mr_0d$xu7x#+b&0e(hp&ncirydaljh649t7t_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["hashflix-5339.onrender.com", "localhost", "127.0.0.1"]
 
