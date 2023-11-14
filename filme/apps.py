@@ -7,12 +7,13 @@ class FilmeConfig(AppConfig):
 
     def ready(self):
         import os
-        email = os.getenv("EMAIL_ADMIN")
-        senha = os.getenv("SENHA_ADMIN")
+        if os.getenv("DATABASE_URL"):
+            email = os.getenv("EMAIL_ADMIN")
+            senha = os.getenv("SENHA_ADMIN")
 
-        from filme.models import Usuario
-        usuario = Usuario.objects.filter(email=email).first()
+            from filme.models import Usuario
+            usuario = Usuario.objects.filter(email=email).first()
 
-        if not usuario:
-            Usuario.objects.create_superuser(username="admin", email=email, password=senha,
-                                             is_active=True, is_staff=True)
+            if not usuario:
+                Usuario.objects.create_superuser(username="admin", email=email, password=senha,
+                                                 is_active=True, is_staff=True)
